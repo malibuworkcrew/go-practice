@@ -1,17 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 import "strings"
+import "bufio"
 
 func main() {
-	var name string
 	fmt.Println("Terminate program to exit loop (Ctrl+C)")
 
 	for {
 		fmt.Println("Enter a string...")
-		num, _ := fmt.Scan(&name)
+		scanner := bufio.NewScanner(os.Stdin)
+		scanner.Scan()
+		name := scanner.Text()
 		lowName := strings.ToLower(name)
-		_ = num
 
 		switch {
 		case strings.HasPrefix(lowName, "i") &&
